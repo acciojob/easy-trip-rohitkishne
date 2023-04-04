@@ -277,4 +277,18 @@ public class AirportRepository {
             return-1.0;
         return fastestFlight;
     }
+
+    public int GetNumberOfPeopleOnWithNoFlight(){
+       int totalPeople = 0;
+
+       for(Integer passenger : passengerDB.keySet())
+       {
+           if(!passengerTotalBookingDB.containsKey(passenger))
+           {
+               totalPeople++;
+           }
+       }
+
+       return totalPeople;
+    }
 }

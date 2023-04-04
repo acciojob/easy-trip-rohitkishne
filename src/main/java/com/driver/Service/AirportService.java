@@ -91,4 +91,8 @@ public class AirportService {
         return airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromCity, toCity);
     }
 
+    public int GetNumberOfPeopleOnWithNoFlight(){
+        return airportRepository.GetNumberOfPeopleOnWithNoFlight();
+    }
+
 }
