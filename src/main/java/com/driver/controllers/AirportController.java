@@ -173,11 +173,11 @@ public class AirportController {
        return "SUCCESS";
     }
 
-//    @GetMapping("/get-number-of-people-on-with-no-flight")
-//    public int getNumberOfPeopleOnWithNoFlight()
-//    {
-//        int totalPeopleWithNoFlight = airportService.getNumberOfPeopleOnWithNoFlight();
-//        return totalPeopleWithNoFlight;
-//    }
+    @GetMapping("/get-number-of-people-on-with-no-flight")
+    public int getNumberOfPeopleOnWithNoFlight()
+    {
+        int totalPeopleWithNoFlight = airportService.getNumberOfPeopleOnWithNoFlight();
+        return totalPeopleWithNoFlight;
+    }
 
 }

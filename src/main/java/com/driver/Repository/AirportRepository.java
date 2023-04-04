@@ -302,17 +302,17 @@ public class AirportRepository {
         return fastestFlight;
     }
 
-//    public int getNumberOfPeopleOnWithNoFlight(){
-//       int totalPeople = 0;
-//
-//       for(Integer passenger : passengerDB.keySet())
-//       {
-//           if(!passengerTotalBookingDB.containsKey(passenger))
-//           {
-//               totalPeople++;
-//           }
-//       }
-//
-//       return totalPeople;
-//    }
+    public int getNumberOfPeopleOnWithNoFlight(){
+       int totalPeople = 0;
+
+       for(Integer passenger : passengerDB.keySet())
+       {
+           if(!passengerTotalBookingDB.containsKey(passenger))
+           {
+               totalPeople++;
+           }
+       }
+
+       return totalPeople;
+    }
 }
