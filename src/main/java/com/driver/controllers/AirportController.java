@@ -173,10 +173,10 @@ public class AirportController {
        return "SUCCESS";
     }
 
-    @GetMapping("/GetNumberOfPeopleOnWithNoFlight")
-    public int GetNumberOfPeopleOnWithNoFlight()
+    @GetMapping("/get-number-of-people-on-with-no-flight")
+    public int getNumberOfPeopleOnWithNoFlight()
     {
-        int totalPeopleWithNoFlight = airportService.GetNumberOfPeopleOnWithNoFlight();
+        int totalPeopleWithNoFlight = airportService.getNumberOfPeopleOnWithNoFlight();
         return totalPeopleWithNoFlight;
     }
 

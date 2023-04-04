@@ -136,7 +136,15 @@ public class AirportRepository {
             if(flight == flightId)
             {
                 flights.remove(flight);
-                passengerTotalBookingDB.put(passengerId, flights);
+                if(flights.size()==0)
+                {
+                    passengerTotalBookingDB.remove(passengerId);
+                }
+                else
+                {
+                    passengerTotalBookingDB.put(passengerId, flights);
+                }
+
                 return true;
             }
         }
@@ -163,7 +171,15 @@ public class AirportRepository {
             if(passenger == passengerId)
             {
                 passengers.remove(passenger);
-                bookingDB.put(flightId, passengers);
+                if(passengers.size()==0)
+                {
+                    bookingDB.remove(flightId);
+                }
+                else
+                {
+                    bookingDB.put(flightId, passengers);
+                }
+                return;
             }
         }
 
@@ -213,13 +229,6 @@ public class AirportRepository {
         return totalCrowd;
     }
 
-    public int calculateFlightFare(Integer flightId)
-    {
-        int passenger = bookingDB.get(flightId).size();
-        int totalFare = 3000 + (passenger * 50);
-        return totalFare;
-    }
-
     public String getAirportNameFromFlightId(Integer flightId)
     {
         City takeOffCity = flightDB.get(flightId).getFromCity();
@@ -236,6 +245,13 @@ public class AirportRepository {
         }
 
         return airportName;
+    }
+
+    public int calculateFlightFare(Integer flightId)
+    {
+        int passenger = bookingDB.get(flightId).size();
+        int totalFare = 3000 + (passenger * 50);
+        return totalFare;
     }
 
     public int calculateRevenueOfAFlight(Integer flightId)
@@ -278,7 +294,7 @@ public class AirportRepository {
         return fastestFlight;
     }
 
-    public int GetNumberOfPeopleOnWithNoFlight(){
+    public int getNumberOfPeopleOnWithNoFlight(){
        int totalPeople = 0;
 
        for(Integer passenger : passengerDB.keySet())
