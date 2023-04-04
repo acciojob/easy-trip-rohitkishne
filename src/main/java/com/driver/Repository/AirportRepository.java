@@ -264,7 +264,23 @@ public class AirportRepository {
 
     public int calculateRevenueOfAFlight(Integer flightId)
     {
-        return calculateFlightFare(flightId);
+        int revenue = 0;
+        if(bookingDB.containsKey(flightId))
+        {
+            int passengers = bookingDB.get(flightId).size();
+            int basic = passengers*3000;
+            int charge = 0;
+            for(int i=1; i<=passengers; i++)
+            {
+                charge = charge + (50*i);
+            }
+            revenue = basic + charge;
+        }
+        else
+        {
+            revenue = 3000;
+        }
+        return revenue;
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId)
