@@ -249,8 +249,16 @@ public class AirportRepository {
 
     public int calculateFlightFare(Integer flightId)
     {
-        int passenger = bookingDB.get(flightId).size();
-        int totalFare = 3000 + (passenger * 50);
+        int totalFare = 0;
+        if(bookingDB.containsKey(flightId))
+        {
+            int passenger = bookingDB.get(flightId).size();
+            totalFare = 3000 + (passenger * 50);
+        }
+        else
+        {
+            totalFare = 3000;
+        }
         return totalFare;
     }
 
