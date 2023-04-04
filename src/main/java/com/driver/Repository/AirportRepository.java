@@ -105,11 +105,6 @@ public class AirportRepository {
         passengers.add(passengerId);
         bookingDB.put(flightId, passengers);
 
-        //revenue uptill now
-        int revenue = calculateFlightFare(flightId);
-        Flight flight = flightDB.get(flightId);
-        flight.setRevenue(revenue);
-
         //update the passenger bookings as well
 
         //Update the passengerTotalBookingDB DB
@@ -141,6 +136,7 @@ public class AirportRepository {
             if(flight == flightId)
             {
                 flights.remove(flight);
+                passengerTotalBookingDB.put(passengerId, flights);
                 return true;
             }
         }
@@ -167,13 +163,10 @@ public class AirportRepository {
             if(passenger == passengerId)
             {
                 passengers.remove(passenger);
+                bookingDB.put(flightId, passengers);
             }
         }
 
-        //revenue uptill now
-        int revenue = calculateFlightFare(flightId);
-        Flight flight = flightDB.get(flightId);
-        flight.setRevenue(revenue);
     }
 
     public String getLargestAirportName(){
@@ -247,12 +240,18 @@ public class AirportRepository {
 
     public int calculateRevenueOfAFlight(Integer flightId)
     {
-        return flightDB.get(flightId).getRevenue();
+        return calculateFlightFare(flightId);
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId)
     {
-        int totalBooking = passengerTotalBookingDB.get(passengerId).size();
+        int totalBooking = 0;
+
+        if(passengerTotalBookingDB.containsKey(passengerId))
+        {
+            totalBooking = passengerTotalBookingDB.get(passengerId).size();
+        }
+
         return totalBooking;
     }
 
@@ -274,7 +273,8 @@ public class AirportRepository {
                 }
             }
         }
-
+        if(fastestFlight == Double.MAX_VALUE)
+            return-1.0;
         return fastestFlight;
     }
 }

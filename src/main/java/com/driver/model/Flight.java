@@ -16,7 +16,6 @@ public class Flight {
 
     private double duration;
 
-    private int revenue;
     public Flight() {
 
     }
@@ -28,7 +27,6 @@ public class Flight {
         this.maxCapacity = maxCapacity;
         this.flightDate = flightDate;
         this.duration = duration;
-        this.revenue = 0;
     }
 
     public int getFlightId() {
@@ -79,11 +77,4 @@ public class Flight {
         this.duration = duration;
     }
 
-    public int getRevenue() {
-        return revenue;
-    }
-
-    public void setRevenue(int revenue) {
-        this.revenue = revenue;
-    }
 }
